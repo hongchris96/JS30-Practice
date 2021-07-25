@@ -58,7 +58,31 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  window.addEventListener("keydown", (e) => {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if (!audio) return;
+    audio.currentTime = 0;
+    audio.play();
+    key.classList.add('playing');
+  })
 
+  const allKeys = document.querySelectorAll('.key');
+  allKeys.forEach(k => {
+    k.addEventListener('transitionend', (e) => {
+      if (e.propertyName !== "transform") return;
+      k.classList.remove('playing');
+    });
+
+    // when holding down the key for spamming, class remain stuck, so need this event listener
+    document.addEventListener('keyup', (e) => {
+      if (k.getAttribute('data-key') == e.keyCode) {
+        if (k.classList.contains('playing')) {
+          k.classList.remove('playing');
+        }
+      }
+    });
+  })
 </script>
 
 
