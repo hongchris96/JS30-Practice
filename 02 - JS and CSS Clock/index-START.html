@@ -39,6 +39,7 @@
       height: 30rem;
       border: 20px solid white;
       border-radius: 50%;
+      background-color: rgba(0, 0, 255, 0.18);
       margin: 50px auto;
       position: relative;
       padding: 2rem;
@@ -59,14 +60,22 @@
     .hand {
       width: 50%;
       height: 6px;
-      background: rgb(255, 242, 103);
+      background: linear-gradient(to left, rgb(255, 242, 103) 60%, rgb(247, 103, 255));
       box-shadow: 0 0 10px rgb(255, 225, 0);
       position: absolute;
       top: 50%;
       transform: rotate(90deg);
       transform-origin: 100%;
       transition: all 0.05s;
-      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.26, 0.84);
+    }
+
+    .hour-hand {
+      background: linear-gradient(to left, rgb(255, 242, 103) 60%, rgb(32, 82, 247));
+    }
+
+    .min-hand {
+      background: linear-gradient(to left, rgb(255, 242, 103) 60%, rgb(37, 255, 3));
     }
 
     .no-trans { 
