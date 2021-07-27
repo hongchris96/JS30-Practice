@@ -37,33 +37,48 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-    console.log(inventors.filter(ele => {
+    console.table(inventors.filter(ele => {
       let yr = ele.year;
       return yr < 1600 && yr >= 1500;
     }));
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
-    console.log(inventors.map(ele => ele.first + " " + ele.last));
+    console.table(inventors.map(ele => ele.first + " " + ele.last));
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-    console.log(inventors.sort((a, b) => b.year - a.year));
+    console.table(inventors.sort((a, b) => b.year - a.year));
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
     console.log(inventors.reduce((acc, ele) => {
-      
-    }));
+      return acc + ele.passed - ele.year;
+    }, 0));
     // 5. Sort the inventors by years lived
-
+    console.table(inventors.sort((a, b) => (b.passed - b.year) - (a.passed - a.year)));
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    // const categories = document.querySelector('.mw-category');
+    // const links = [...categories.querySelectorAll('a')];
+    
+    // const deNames = links
+    //                 .map(ele => ele.innerHTML)
+    //                 .filter(ele => ele.includes('de'));
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-
+    console.table(people.sort((a, b) => a.split(', ') > b.split(', ') ? 1 : -1));
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    console.log(data.reduce((acc, ele) => {
+      if (acc[ele]) {
+        acc[ele] += 1;
+      } else {
+        acc[ele] = 1;
+      }
+      return acc;
+    }, {}));
 
   </script>
 </body>
